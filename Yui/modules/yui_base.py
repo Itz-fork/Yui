@@ -62,7 +62,10 @@ class Yui_Base():
     async def get_ai_engine(self):
         if self.heroku_app:
             conf = self.heroku_app.config()
-            return conf["ENGINE"]
+            try:
+                return conf["ENGINE"]
+            except:
+                return Defaults().Engine
         else:
             engine = await self.yui_sql_db.get_engine()
             if not engine:
