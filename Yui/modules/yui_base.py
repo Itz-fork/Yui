@@ -35,7 +35,8 @@ class Yui_Base():
             # Save the chat log of the user
             await yui_oai.append_and_save_chat_log(quiz, answ, usr_id, c_log)
             return answ
-        except:
+        except Exception as e:
+            print(e)
             try:
                 yui_luna = Yui_ARQ(Config.ARQ_API_URL, Config.ARQ_KEY)
                 # Asks question from Yui (Luna chat bot)
