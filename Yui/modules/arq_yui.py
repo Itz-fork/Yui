@@ -1,7 +1,7 @@
 # Copyright (c) 2021 Itz-fork
 
 from aiohttp import ClientSession
-from Python_ARQ import ARQ, arq
+from Python_ARQ import ARQ
 
 
 class Yui_ARQ():

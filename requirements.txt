@@ -1,0 +1,6 @@
+pyrogram
+TgCrypto
+openai
+aiohttp
+python-arq
+heroku3
