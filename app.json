@@ -1,0 +1,65 @@
+{
+    "name": "Yui",
+    "description": "Simple Telegram AI Chat bot made using OpenAI and Luna API",
+    "logo": "https://telegra.ph//file/af53660a0306db2653fe6.jpg",
+    "keywords": [
+        "ai",
+        "Telegram Bot",
+        "chat bot",
+        "telegram chat bot"
+    ],
+    "website": "https://t.me/NexaBotsUpdates",
+    "repository": "https://github.com/Itz-fork/Yui",
+    "success_url": "https://t.me/NexaBotsUpdates",
+    "env": {
+        "APP_ID": {
+            "description": "Your APP_ID from my.telegram.org",
+            "required": true
+        },
+        "API_HASH": {
+            "description": "Your API_HASH from my.telegram.org",
+            "required": true
+        },
+        "ARQ_KEY": {
+            "description": "Your ARQ API Key. Get it from @ARQRobot",
+            "required": true
+        },
+        "BOT_TOKEN": {
+            "description": "Your Bot Token From @BotFather",
+            "required": true
+        },
+        "HEROKU_API": {
+            "description": "Your Heroku API Key, Read the README for more info",
+            "required": true
+        },
+        "HEROKU_APP_NAME": {
+            "description": "Your Heroku app name",
+            "required": true
+        },
+        "ON_HEROKU": {
+            "description": "Set this to True as you're deploying this on Heroku",
+            "required": true,
+            "value": "True"
+        },
+        "OPENAI_KEY": {
+            "description": "Your OpenAI API Key, Read the README for more info",
+            "required": true
+        },
+        "OWNER_ID": {
+            "description": "Your Telegra, Account Id, Read the README for more info",
+            "required": true
+        }
+    },
+    "addons": [],
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        }
+    ],
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    }
+}
