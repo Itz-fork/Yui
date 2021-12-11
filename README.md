@@ -67,6 +67,6 @@ python3 -m Yui
 ```
 Copyright (c) 2021 Itz-fork
 
-This Unzipper-Bot repository is licensed under GPLv3 License (https://github.com/Itz-fork/Yui/blob/master/LICENSE)
+This Yui repository is licensed under GPLv3 License (https://github.com/Itz-fork/Yui/blob/master/LICENSE)
 Copying or Modifying Any Part of the code without permission is strictly prohibited
 ```
