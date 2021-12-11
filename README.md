@@ -1,7 +1,8 @@
 # Yui
 
-Yui, is a simple telegram chat bot made using OpenAI and Luna Chat bot (python arq)
+***Yui, is a simple telegram chat bot made using OpenAI and Luna Chat bot***
 
+----
 
 ## Deployment 👀
 
@@ -21,7 +22,7 @@ cd Yui
 pip3 install -r requirements.txt
 ```
 
-***Edit "config.py" with your own values***
+**Edit "config.py" with your own values**
 
 ```bash
 python3 -m Yui
