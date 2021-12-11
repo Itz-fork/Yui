@@ -9,7 +9,7 @@ Deploying is easy 🤫! You can deploy this bot in Heroku or in a VPS ♥️! **
 
 #### With Heroku
 
-<a href="https://www.heroku.com/deploy?template=https://github.com/Itz-fork/Unzipper-Bot">
+<a href="https://www.heroku.com/deploy?template=https://github.com/Itz-fork/Yui">
   <img src="https://www.herokucdn.com/deploy/button.svg">
 </a>
 
