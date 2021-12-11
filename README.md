@@ -1,2 +1,3 @@
 # Yui
-Simple Telegram AI Chat bot made using OpenAI and Luna API
+
+Yui, is a simple telegram chat bot made using OpenAI and Luna Chat bot (python arq)
