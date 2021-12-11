@@ -11,18 +11,18 @@ from config import Config
 @yuiai.on_message(~filters.command(["engine", "help"]) & ~filters.edited & ~filters.via_bot)
 async def talk_with_yui(_, message: Message):
     c_type = message.chat.type
+    yui_base = Yui_Base()
     if c_type == "private":
-        quiz_txt = message.text
+        quiz_text = message.text
     elif c_type == "supergroup" or "group":
         # Was going to use regex but this is still ok tho
         if "Yui" or "yui" in message.text:
             quiz_text = message.text
     else:
-        return
+        return await message.reply(await yui_base.emergency_pick())
     # Arguments
     quiz = quiz_text.strip()
     usr_id = message.from_user.id
-    yui_base = Yui_Base()
     # Get the reply from Yui
     rply = await yui_base.get_answer_from_yui(quiz, usr_id)
     await yui_base.reply_to_user(message, rply)
