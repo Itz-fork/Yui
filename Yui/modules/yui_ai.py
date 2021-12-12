@@ -27,7 +27,7 @@ async def talk_with_yui(_, message: Message):
             if not r_msg.from_user:
                 return
             f_usr_id = r_msg.from_user.id
-            print(yui_bot_id)
+            print(f"From: {f_usr_id} \nBot Id: {yui_bot_id}")
             if f_usr_id != yui_bot_id:
                 return
             if message.text:
