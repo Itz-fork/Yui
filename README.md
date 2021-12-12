@@ -50,6 +50,10 @@ python3 -m Yui
   - Scroll down and find the "API Key" section and click on Reveal button to get your API Key
 
 
+### Note ⚠️
+
+If you want to increase the response length limit change [Max Response Length Limit Value](https://github.com/Itz-fork/Yui/blob/ef431bb67f5c51ee3d5a634d91a2b0f740192d36/Yui/data/defaults.py#L19) to whatever you want (Value must be a integer). Also increasing this can spend your OpenAI credits quickly
+
 ## Support 🍪
 
 <a href="https://t.me/NexaBotsUpdates">
