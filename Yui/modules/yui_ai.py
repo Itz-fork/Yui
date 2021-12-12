@@ -4,8 +4,8 @@ import re
 
 from pyrogram import Client as yuiai, filters
 from pyrogram.types import Message
-from .yui_base import Yui_Base
 from Yui.data.defaults import Defaults
+from .yui_base import Yui_Base
 from config import Config
 
 
@@ -13,8 +13,6 @@ from config import Config
 yui_bot_id = Config.BOT_TOKEN.split(":")[0]
 
 # Chat
-
-
 @yuiai.on_message(~filters.command(["engine", "help"]) & ~filters.edited & ~filters.via_bot)
 async def talk_with_yui(_, message: Message):
     c_type = message.chat.type
@@ -29,9 +27,13 @@ async def talk_with_yui(_, message: Message):
             if not r_msg.from_user:
                 return
             f_usr_id = r_msg.from_user.id
+            print(yui_bot_id)
             if f_usr_id != yui_bot_id:
                 return
-            quiz_text = message.text
+            if message.text:
+                quiz_text = message.text
+            else:
+                pass
         else:
             return await message.stop_propagation()
     else:
