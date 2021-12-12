@@ -24,11 +24,11 @@ async def talk_with_yui(_, message: Message):
         if message.text and re.search(r'\bYui|yui\b', message.text):
             quiz_text = message.text
         elif r_msg:
-            if r_msg.from_user:
-                if r_msg.from_user.id == yui_bot_id:
-                    quiz_text = message.text
-            else:
+            if not r_msg.from_user:
                 return
+            f_usr_id = r_msg.from_user.id
+            if f_usr_id == yui_bot_id:
+                quiz_text = message.text
         else:
             return await message.stop_propagation()
     else:
