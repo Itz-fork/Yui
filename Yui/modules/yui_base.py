@@ -63,7 +63,10 @@ class Yui_Base():
         if self.heroku_app:
             conf = self.heroku_app.config()
             try:
-                return conf["ENGINE"]
+                if conf["ENGINE"]:
+                    return conf["ENGINE"]
+                else:
+                    return Defaults().Engine
             except:
                 return Defaults().Engine
         else:
