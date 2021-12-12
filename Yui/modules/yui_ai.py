@@ -19,9 +19,9 @@ async def talk_with_yui(_, message: Message):
         if "Yui" or "yui" in message.text:
             quiz_text = message.text
         else:
-            return
+            return await message.stop_propagation()
     else:
-        return
+        return await message.stop_propagation()
     # Arguments
     if quiz_text:
         quiz = quiz_text.strip()
@@ -35,7 +35,7 @@ async def talk_with_yui(_, message: Message):
         elif message.sticker:
             return await yui_base.reply_to_user(message, await yui_base.sticker_resp())
         else:
-            return
+            return await message.stop_propagation()
     usr_id = message.from_user.id
     # Get the reply from Yui
     rply = await yui_base.get_answer_from_yui(quiz, usr_id)
