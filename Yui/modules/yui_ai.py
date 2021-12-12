@@ -13,6 +13,8 @@ from config import Config
 yui_bot_id = Config.BOT_TOKEN.split(":")[0]
 
 # Chat
+
+
 @yuiai.on_message(~filters.command(["engine", "help"]) & ~filters.edited & ~filters.via_bot)
 async def talk_with_yui(_, message: Message):
     c_type = message.chat.type
@@ -27,8 +29,9 @@ async def talk_with_yui(_, message: Message):
             if not r_msg.from_user:
                 return
             f_usr_id = r_msg.from_user.id
-            if f_usr_id == yui_bot_id:
-                quiz_text = message.text
+            if f_usr_id != yui_bot_id:
+                return
+            quiz_text = message.text
         else:
             return await message.stop_propagation()
     else:
