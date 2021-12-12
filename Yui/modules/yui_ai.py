@@ -27,11 +27,13 @@ async def talk_with_yui(_, message: Message):
         quiz = quiz_text.strip()
     else:
         if message.photo:
-            return yui_base.reply_to_user(message, await yui_base.image_resp())
+            return await yui_base.reply_to_user(message, await yui_base.image_resp())
         elif message.video or message.video_note or message.animation:
-            return yui_base.reply_to_user(message, await yui_base.vid_resp())
+            return await yui_base.reply_to_user(message, await yui_base.vid_resp())
         elif message.document:
-            return yui_base.reply_to_user(message, await yui_base.doc_resp())
+            return await yui_base.reply_to_user(message, await yui_base.doc_resp())
+        elif message.sticker:
+            return await yui_base.reply_to_user(message, await yui_base.sticker_resp())
         else:
             return
     usr_id = message.from_user.id
