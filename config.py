@@ -16,5 +16,5 @@ class Config(object):
     ON_HEROKU = bool(os.environ.get("ON_HEROKU", False))
     HEROKU_API = os.environ.get("HEROKU_API")
     HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME")
-    # # Banned users IDs
-    # BANNED_USERS = 
+    # Banned users IDs
+    BANNED_USERS = set(int(usr) for usr in os.environ.get("BANNED_USERS", "12345").split())

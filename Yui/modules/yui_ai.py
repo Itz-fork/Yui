@@ -9,6 +9,16 @@ from .yui_base import Yui_Base
 from config import Config
 
 
+# Handling Users
+@yuiai.on_message(filters.private)
+async def _(_, message: Message):
+    if message.from_user.id in Config.BANNED_USERS:
+        yui_base = Yui_Base()
+        await yui_base.reply_to_user(message, await yui_base.banned_resp())
+        await message.stop_propagation()
+    await message.continue_propagation()     
+
+
 # Bot Id
 yui_bot_id = Config.BOT_TOKEN.split(":")[0]
 
@@ -27,18 +37,19 @@ async def talk_with_yui(_, message: Message):
             if not r_msg.from_user:
                 return
             f_usr_id = r_msg.from_user.id
-            print(f"From: {f_usr_id} \nBot Id: {yui_bot_id}")
-            if f_usr_id != yui_bot_id:
-                return
-            if message.text:
-                quiz_text = message.text
+            if f_usr_id == yui_bot_id:
+                if message.text:
+                    quiz_text = message.text
+                else:
+                    pass
             else:
-                pass
+                return
         else:
             return await message.stop_propagation()
     else:
         return await message.stop_propagation()
     # Arguments
+    print("Working ;-;")
     if quiz_text:
         quiz = quiz_text.strip()
     else:
@@ -98,5 +109,23 @@ To set an engine use `/engine` command followed by the engine code name you want
                 await message.reply(f"**Successfully Changed OpenAI Engine** \n\n**New Engine:** `{selected_engine}`")
             else:
                 await message.reply("**Invalid Engine Selected!**")
+        except:
+            await message.reply(await yui_base.emergency_pick())
+
+
+# Ban users
+@yuiai.on_message(filters.command("ban") & filters.user(Config.OWNER_ID))
+async def ban_usr_fbot(_, message: Message):
+    if len(message.command) != 2:
+        return await message.reply("**Give a user id to ban!**")
+    else:
+        yui_base = Yui_Base()
+        try:
+            usr_id = message.text.split(None)[1].strip()
+            if Config.ON_HEROKU:
+                await yui_base.ban_usr(usr_id)
+                await message.reply(f"**Successfully Banned That User** \n\n**User ID:** `{usr_id}`")
+            else:
+                await message.reply("**Only available for Heroku!**")
         except:
             await message.reply(await yui_base.emergency_pick())

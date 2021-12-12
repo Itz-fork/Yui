@@ -7,6 +7,13 @@ Emergency_Msgs = [
     "Ooops!, I think I forgot to pay my bill!"
 ]
 
+Banned_Response = [
+    "I don't wanna talk with you!",
+    "My owner don't like you, so do I",
+    "You're dumb af",
+    "Why are you here?",
+    "Damn, idiot arrived!"
+]
 
 Photo_Reesponse = [
     "Woah, that's a nice picture",
