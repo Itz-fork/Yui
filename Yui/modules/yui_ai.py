@@ -13,15 +13,19 @@ async def talk_with_yui(_, message: Message):
     c_type = message.chat.type
     yui_base = Yui_Base()
     if c_type == "private":
+        print(f"Private: {message.text}")
         quiz_text = message.text
     elif c_type == "supergroup" or "group":
         # Was going to use regex but this is still ok tho
         if "Yui" or "yui" in message.text:
+            print(f"Group: {message.text}")
             quiz_text = message.text
         else:
-            return await message.stop_propagation()
+            await message.stop_propagation()
+            return
     else:
-        return await message.stop_propagation()
+        await message.stop_propagation()
+        return
     # Arguments
     if quiz_text:
         quiz = quiz_text.strip()
@@ -35,7 +39,8 @@ async def talk_with_yui(_, message: Message):
         elif message.sticker:
             return await yui_base.reply_to_user(message, await yui_base.sticker_resp())
         else:
-            return await message.stop_propagation()
+            await message.stop_propagation()
+            return
     usr_id = message.from_user.id
     # Get the reply from Yui
     rply = await yui_base.get_answer_from_yui(quiz, usr_id)
