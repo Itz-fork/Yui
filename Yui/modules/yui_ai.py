@@ -23,15 +23,15 @@ async def talk_with_yui(_, message: Message):
         # Was going to use regex but this is still ok tho
         if message.text and re.search(r'\bYui|yui\b', message.text):
             quiz_text = message.text
-        elif message.reply_to_message.from_user:
+        elif message.reply_to_message and message.reply_to_message.from_user:
             if message.reply_to_message.from_user.id == yui_bot_id:
                 quiz_text = message.text
+            else:
+                return await message.stop_propagation()
         else:
-            await message.stop_propagation()
-            return
+            return await message.stop_propagation()
     else:
-        await message.stop_propagation()
-        return
+        return await message.stop_propagation()
     # Arguments
     if quiz_text:
         quiz = quiz_text.strip()
@@ -45,8 +45,7 @@ async def talk_with_yui(_, message: Message):
         elif message.sticker:
             return await yui_base.reply_to_user(message, await yui_base.sticker_resp())
         else:
-            await message.stop_propagation()
-            return
+            return await message.stop_propagation()
     usr_id = message.from_user.id
     # Get the reply from Yui
     rply = await yui_base.get_answer_from_yui(quiz, usr_id)
