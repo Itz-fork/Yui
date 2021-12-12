@@ -34,6 +34,8 @@ async def talk_with_yui(_, message: Message):
             if r_msg.from_user.id == yui_bot_id:
                 if message.text:
                     quiz_text = message.text
+                else:
+                    quiz_text = None
             else:
                 return
         else:
