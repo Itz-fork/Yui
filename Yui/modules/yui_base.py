@@ -4,7 +4,7 @@ from asyncio import sleep
 from random import choice
 from heroku3 import from_key
 
-from Yui.data.yui_msgs import Emergency_Msgs
+from Yui.data.yui_msgs import Emergency_Msgs, Photo_Reesponse, Video_and_gif_Response, Document_Response
 from Yui.data.database import Yui_Database
 from Yui.data.defaults import Defaults
 from .openai_yui import Yui_OpenAI
@@ -75,3 +75,12 @@ class Yui_Base():
     
     async def emergency_pick(self):
         return choice(Emergency_Msgs)
+    
+    async def image_resp(self):
+        return choice(Photo_Reesponse)
+    
+    async def vid_resp(self):
+        return choice(Video_and_gif_Response)
+    
+    async def doc_resp(self):
+        return choice(Document_Response)

@@ -18,13 +18,20 @@ async def talk_with_yui(_, message: Message):
         # Was going to use regex but this is still ok tho
         if "Yui" or "yui" in message.text:
             quiz_text = message.text
+        else:
+            return
     else:
-        return await message.reply(await yui_base.emergency_pick())
+        return
     # Arguments
     if quiz_text:
         quiz = quiz_text.strip()
     else:
-        return await message.reply("This isn't a text message :(!", reply_to_message_id=message.message_id)
+        if message.photo:
+            return await message.reply(await yui_base.image_resp(), reply_to_message_id=message.message_id)
+        elif message.video or message.video_note or message.animation:
+            return await message.reply(await yui_base.vid_resp(), reply_to_message_id=message.message_id)
+        else:
+            return await message.reply(await yui_base.doc_resp(), reply_to_message_id=message.message_id)
     usr_id = message.from_user.id
     # Get the reply from Yui
     rply = await yui_base.get_answer_from_yui(quiz, usr_id)
