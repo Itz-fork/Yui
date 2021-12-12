@@ -6,17 +6,7 @@ from pyrogram import Client as yuiai, filters
 from pyrogram.types import Message
 from Yui.data.defaults import Defaults
 from .yui_base import Yui_Base
-from config import Config
-
-
-# Handling Users
-@yuiai.on_message(filters.private)
-async def _(_, message: Message):
-    if message.from_user.id in Config.BANNED_USERS:
-        yui_base = Yui_Base()
-        await yui_base.reply_to_user(message, await yui_base.banned_resp())
-        await message.stop_propagation()
-    await message.continue_propagation()     
+from config import Config 
 
 
 # Bot Id
@@ -28,21 +18,22 @@ async def talk_with_yui(_, message: Message):
     c_type = message.chat.type
     r_msg = message.reply_to_message
     yui_base = Yui_Base()
+    # For Private chats
     if c_type == "private":
         quiz_text = message.text
+    # For Public and private groups
     elif c_type == "supergroup" or "group":
+        # Regex to find if "yui" or "Yui" in the message text
         if message.text and re.search(r'\bYui|yui\b', message.text):
             quiz_text = message.text
+        # For replied message
         elif r_msg:
             if not r_msg.from_user:
                 return
-            f_usr_id = r_msg.from_user.id
-            if f_usr_id == yui_bot_id:
+            # If replied message wasn't sent by the bot itself won't be answered
+            if r_msg.from_user.id == yui_bot_id:
                 if message.text:
                     quiz_text = message.text
-                else:
-                    print("Ded")
-                    pass
             else:
                 return
         else:
@@ -130,20 +121,3 @@ async def help_yui(_, message: Message):
 **Made with ❤️ by @NexaBotsUpdates**
 """
     await message.reply(help_msg, reply_to_message_id=message.message_id)
-
-# Ban users
-@yuiai.on_message(filters.command("ban") & filters.user(Config.OWNER_ID))
-async def ban_usr_fbot(_, message: Message):
-    if len(message.command) != 2:
-        return await message.reply("**Give a user id to ban!**")
-    else:
-        yui_base = Yui_Base()
-        try:
-            usr_id = message.text.split(None)[1].strip()
-            if Config.ON_HEROKU:
-                await yui_base.ban_usr(usr_id)
-                await message.reply(f"**Successfully Banned That User** \n\n**User ID:** `{usr_id}`")
-            else:
-                await message.reply("**Only available for Heroku!**")
-        except:
-            await message.reply(await yui_base.emergency_pick())
