@@ -1,5 +1,7 @@
 # Copyright (c) 2021 Itz-fork
 
+import re
+
 from pyrogram import Client as yuiai, filters
 from pyrogram.types import Message
 from .yui_base import Yui_Base
@@ -13,12 +15,10 @@ async def talk_with_yui(_, message: Message):
     c_type = message.chat.type
     yui_base = Yui_Base()
     if c_type == "private":
-        print(f"Private: {message.text}")
         quiz_text = message.text
     elif c_type == "supergroup" or "group":
         # Was going to use regex but this is still ok tho
-        if "Yui" or "yui" in message.text:
-            print(f"Group: {message.text}")
+        if re.search(r'\bYui|yui\b', message.text):
             quiz_text = message.text
         else:
             await message.stop_propagation()
