@@ -41,6 +41,7 @@ async def talk_with_yui(_, message: Message):
                 if message.text:
                     quiz_text = message.text
                 else:
+                    print("Ded")
                     pass
             else:
                 return
