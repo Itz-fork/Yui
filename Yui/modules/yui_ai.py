@@ -16,18 +16,19 @@ yui_bot_id = Config.BOT_TOKEN.split(":")[0]
 @yuiai.on_message(~filters.command(["engine", "help"]) & ~filters.edited & ~filters.via_bot)
 async def talk_with_yui(_, message: Message):
     c_type = message.chat.type
+    r_msg = message.reply_to_message
     yui_base = Yui_Base()
     if c_type == "private":
         quiz_text = message.text
     elif c_type == "supergroup" or "group":
-        # Was going to use regex but this is still ok tho
         if message.text and re.search(r'\bYui|yui\b', message.text):
             quiz_text = message.text
-        elif message.reply_to_message and message.reply_to_message.from_user:
-            if message.reply_to_message.from_user.id == yui_bot_id:
-                quiz_text = message.text
+        elif r_msg:
+            if r_msg.from_user:
+                if r_msg.from_user.id == yui_bot_id:
+                    quiz_text = message.text
             else:
-                return await message.stop_propagation()
+                return
         else:
             return await message.stop_propagation()
     else:
