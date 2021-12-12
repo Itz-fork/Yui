@@ -76,6 +76,15 @@ class Yui_Base():
             else:
                 return engine
     
+    async def restart_yui(self):
+        try:
+            if self.heroku_app:
+                self.heroku_app.restart()
+            else:
+                return
+        except Exception as e:
+            print(f"Error: {e}")
+    
     async def emergency_pick(self):
         return choice(Emergency_Msgs)
     
