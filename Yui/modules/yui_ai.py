@@ -9,6 +9,9 @@ from Yui.data.defaults import Defaults
 from config import Config
 
 
+# Bot Id
+yui_bot_id = Config.BOT_TOKEN.split(":")[0]
+
 # Chat
 @yuiai.on_message(~filters.command(["engine", "help"]) & ~filters.edited & ~filters.via_bot)
 async def talk_with_yui(_, message: Message):
@@ -20,6 +23,9 @@ async def talk_with_yui(_, message: Message):
         # Was going to use regex but this is still ok tho
         if re.search(r'\bYui|yui\b', message.text):
             quiz_text = message.text
+        elif message.reply_to_message.from_user:
+            if message.reply_to_message.from_user.id == yui_bot_id:
+                quiz_text = message.text
         else:
             await message.stop_propagation()
             return
