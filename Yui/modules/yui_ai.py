@@ -20,10 +20,10 @@ async def _(_, message: Message):
 
 
 # Bot Id
-yui_bot_id = Config.BOT_TOKEN.split(":")[0]
+yui_bot_id = int(Config.BOT_TOKEN.split(":")[0])
 
 # Chat
-@yuiai.on_message(~filters.command(["engine", "help"]) & ~filters.edited & ~filters.via_bot)
+@yuiai.on_message(~filters.command(["engine", "help", "ban"]) & ~filters.edited & ~filters.via_bot)
 async def talk_with_yui(_, message: Message):
     c_type = message.chat.type
     r_msg = message.reply_to_message
@@ -49,7 +49,6 @@ async def talk_with_yui(_, message: Message):
     else:
         return await message.stop_propagation()
     # Arguments
-    print("Working ;-;")
     if quiz_text:
         quiz = quiz_text.strip()
     else:
@@ -112,6 +111,24 @@ To set an engine use `/engine` command followed by the engine code name you want
         except:
             await message.reply(await yui_base.emergency_pick())
 
+
+# Help
+@yuiai.on_message(filters.command("help"))
+async def help_yui(_, message: Message):
+    help_msg = """
+**✨ Help Section**
+
+
+**How to change OpenAI engine 🤔?**
+- To change OpenAI Engine use `/engine` command followed by the engine name. For more info send /engine command
+
+**How to ban someone from Bot 🤔?**
+    - This is a chat bot tho. WHy you need to ban someone? If it's necessary use `/ban` command (Only for Heroku Users)
+
+
+**Made with ❤️ by @NexaBotsUpdates**
+"""
+    await message.reply(help_msg, reply_to_message_id=message.message_id)
 
 # Ban users
 @yuiai.on_message(filters.command("ban") & filters.user(Config.OWNER_ID))

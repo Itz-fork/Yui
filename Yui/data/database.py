@@ -40,9 +40,13 @@ class Yui_Database():
         return self.yui_db.commit()
     
     async def get_engine(self):
-        return self.curs.execute(
+        selct = self.curs.execute(
             """
             SELECT engine_name
             FROM engine
             """
-        ).fetchone()[0]
+        ).fetchone()
+        if selct:
+            return selct[0]
+        else:
+            return None
