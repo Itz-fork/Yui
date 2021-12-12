@@ -21,7 +21,7 @@ async def talk_with_yui(_, message: Message):
         quiz_text = message.text
     elif c_type == "supergroup" or "group":
         # Was going to use regex but this is still ok tho
-        if re.search(r'\bYui|yui\b', message.text):
+        if message.text and re.search(r'\bYui|yui\b', message.text):
             quiz_text = message.text
         elif message.reply_to_message.from_user:
             if message.reply_to_message.from_user.id == yui_bot_id:
