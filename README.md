@@ -40,6 +40,7 @@ python3 -m Yui
   - Then go to [API Keys Section](https://beta.openai.com/account/api-keys)
   - From there you can copy your OpenAI API Key
 - `ARQ_KEY` - Your ARQ API Key. Get it from [@ARQRobot](https://t.me/ARQRobot)
+- `DEFAULT_CHATBOT` - The Default chatbot you want to use after OpenAI. (`affiliateplus` or `luna`)
 
 **For Heroku Users,**
 
