@@ -28,6 +28,10 @@
             "description": "Your Bot Token From @BotFather",
             "required": true
         },
+        "DEFAULT_CHATBOT": {
+            "description": "The Default chatbot you want to use after OpenAI. Read README for more info.",
+            "required": false
+        },
         "HEROKU_API": {
             "description": "Your Heroku API Key, Read the README for more info",
             "required": true
