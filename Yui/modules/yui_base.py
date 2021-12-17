@@ -9,6 +9,7 @@ from Yui.data.database import Yui_Database
 from Yui.data.defaults import Defaults
 from .openai_yui import Yui_OpenAI
 from .arq_yui import Yui_ARQ
+from .affiliateplus_yui import Yui_Affiliate
 from config import Config
 
 
@@ -38,7 +39,11 @@ class Yui_Base():
         except Exception as e:
             print(e)
             try:
-                yui_luna = Yui_ARQ(Config.ARQ_API_URL, Config.ARQ_KEY)
+                if Config.DEFAULT_CHATBOT == "affiliateplus":
+                    yui_af = Yui_Affiliate()
+                    return await yui_af.ask_yui(quiz, usr_id)
+                else:
+                    yui_luna = Yui_ARQ(Config.ARQ_API_URL, Config.ARQ_KEY)
                 # Asks question from Yui (Luna chat bot)
                 return await yui_luna.ask_yui(quiz, usr_id)
             except:
