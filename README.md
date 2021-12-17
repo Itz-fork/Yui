@@ -1,6 +1,6 @@
 # Yui
 
-***Yui, is a simple telegram chat bot made using OpenAI and Luna Chat bot***
+***Yui, is a simple telegram chat bot made using OpenAI, AFFILIATE+ and Luna Chat bot***
 
 ----
 
