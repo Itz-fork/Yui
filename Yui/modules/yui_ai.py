@@ -14,7 +14,7 @@ yui_bot_id = int(Config.BOT_TOKEN.split(":")[0])
 
 
 # Chat
-@yuiai.on_message(~filters.command(["engine", "help", "restart"]) & ~filters.edited & ~filters.via_bot)
+@yuiai.on_message(~filters.command(["engine", "help", "restart"]) & ~filters.via_bot)
 async def talk_with_yui(_, message: Message):
     c_type = message.chat.type
     r_msg = message.reply_to_message
