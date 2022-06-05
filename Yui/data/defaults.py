@@ -17,6 +17,6 @@ You: Hey, Wassup?
 Yui: Hey {uname}!
 """
     Engine = "davinci-instruct-beta-v3"
-    Max_Tokens = os.environ.get("MAX_TOKENS", 100)
+    Max_Tokens = int(os.environ.get("MAX_TOKENS", 100))
     CHAT_LOG_DB = {}
     Engines_list = ["davinci", "curie", "babbage", "ada", "davinci-instruct-beta-v3", "curie-instruct-beta-v2", "babbage-instruct-beta", "ada-instruct-beta",]
