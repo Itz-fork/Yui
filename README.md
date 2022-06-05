@@ -41,6 +41,7 @@ python3 -m Yui
   - From there you can copy your OpenAI API Key
 - `ARQ_KEY` - Your ARQ API Key. Get it from [@ARQRobot](https://t.me/ARQRobot)
 - `DEFAULT_CHATBOT` - The Default chatbot you want to use after OpenAI. (`affiliateplus` or `luna`)
+- `MAX_TOKENS` - The maximum number of tokens to generate in the completion
 
 **For Heroku Users,**
 

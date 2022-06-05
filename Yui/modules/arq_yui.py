@@ -12,10 +12,11 @@ class Yui_ARQ():
         __close_session - Closes the aiohttp session
         ask_yui - Get response from luna chat bot
     """
+
     def __init__(self, api, key) -> None:
         self.session = ClientSession()
         self.arq = ARQ(api, key, self.session)
-    
+
     async def __close_session(self, aiohtp_c):
         await aiohtp_c.close()
 

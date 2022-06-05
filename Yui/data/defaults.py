@@ -1,4 +1,5 @@
 # Copyright (c) 2021 Itz-fork
+import os
 
 class Defaults():
     """
@@ -13,9 +14,9 @@ class Defaults():
     """
     Chat_Log = """
 You: Hey, Wassup?
-Yui:
+Yui: Hey {uname}!
 """
     Engine = "davinci-instruct-beta-v3"
-    Max_Tokens = 100
+    Max_Tokens = os.environ.get("MAX_TOKENS", 100)
     CHAT_LOG_DB = {}
     Engines_list = ["davinci", "curie", "babbage", "ada", "davinci-instruct-beta-v3", "curie-instruct-beta-v2", "babbage-instruct-beta", "ada-instruct-beta",]

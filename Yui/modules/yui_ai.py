@@ -6,11 +6,12 @@ from pyrogram import Client as yuiai, filters
 from pyrogram.types import Message
 from Yui.data.defaults import Defaults
 from .yui_base import Yui_Base
-from config import Config 
+from config import Config
 
 
 # Bot Id
 yui_bot_id = int(Config.BOT_TOKEN.split(":")[0])
+
 
 # Chat
 @yuiai.on_message(~filters.command(["engine", "help", "restart"]) & ~filters.edited & ~filters.via_bot)
@@ -32,10 +33,9 @@ async def talk_with_yui(_, message: Message):
                 return
             # If replied message wasn't sent by the bot itself won't be answered
             if r_msg.from_user.id == yui_bot_id:
+                quiz_text = None
                 if message.text:
                     quiz_text = message.text
-                else:
-                    quiz_text = None
             else:
                 return
         else:
@@ -122,7 +122,7 @@ async def help_yui(_, message: Message):
 
 **Made with ❤️ by @NexaBotsUpdates**
 """
-    await message.reply(help_msg, reply_to_message_id=message.message_id)
+    await message.reply(help_msg, reply_to_message_id=message.id)
 
 
 # Restart Heroku App

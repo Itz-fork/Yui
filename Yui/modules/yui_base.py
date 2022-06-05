@@ -17,6 +17,7 @@ class Yui_Base():
     """
     Base of Yui Chat bot
     """
+
     def __init__(self) -> None:
         if Config.ON_HEROKU:
             heroku_c = from_key(Config.HEROKU_API)
@@ -54,16 +55,16 @@ class Yui_Base():
         await message._client.send_chat_action(chat_id, "typing")
         # Sleeping for 2 seconds to make the bot more real
         await sleep(2)
-        await message.reply_text(answer, reply_to_message_id=message.message_id)
+        await message.reply_text(answer, reply_to_message_id=message.id)
         await message._client.send_chat_action(chat_id, "cancel")
-    
+
     async def set_ai_engine(self, engine):
         if self.heroku_app:
             conf = self.heroku_app.config()
             conf["ENGINE"] = str(engine)
         else:
             await self.yui_sql_db.set_engine(engine)
-    
+
     async def get_ai_engine(self):
         if self.heroku_app:
             conf = self.heroku_app.config()
@@ -80,7 +81,7 @@ class Yui_Base():
                 return Defaults().Engine
             else:
                 return engine
-    
+
     async def restart_yui(self):
         try:
             if self.heroku_app:
@@ -89,18 +90,18 @@ class Yui_Base():
                 return
         except Exception as e:
             print(f"Error: {e}")
-    
+
     async def emergency_pick(self):
         return choice(Emergency_Msgs)
-    
+
     async def image_resp(self):
         return choice(Photo_Reesponse)
-    
+
     async def vid_resp(self):
         return choice(Video_and_gif_Response)
-    
+
     async def doc_resp(self):
         return choice(Document_Response)
-    
+
     async def sticker_resp(self):
         return choice(Sticker_Response)
