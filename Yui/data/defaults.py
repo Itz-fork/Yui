@@ -14,7 +14,9 @@ class Defaults():
     """
     Chat_Log = """
 You: Hey, Wassup?
-Yui: Hey {uname}!
+Yui: Hey there!
+You: I'm {uname}!
+Yui:
 """
     Engine = "text-davinci-002"
     Max_Tokens = int(os.environ.get("MAX_TOKENS", 100))
