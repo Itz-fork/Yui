@@ -36,7 +36,7 @@ class Yui_OpenAI():
         prmpt = f"{chat_log}You: {question}\nYui:"
         response = completion.create(
             prompt=prmpt, engine=self.engine, stop=["\nYou"], temperature=0.9,
-            top_p=1, frequency_penalty=0.1, presence_penalty=0.7, best_of=1,
+            top_p=1, frequency_penalty=0, presence_penalty=0.6, best_of=1,
             max_tokens=defaults.Max_Tokens)
         return response.choices[0].text.strip()
 
