@@ -16,7 +16,7 @@ class Defaults():
 You: Hey, Wassup?
 Yui: Hey {uname}!
 """
-    Engine = "davinci-instruct-beta-v3"
+    Engine = "text-davinci-002"
     Max_Tokens = int(os.environ.get("MAX_TOKENS", 100))
     CHAT_LOG_DB = {}
-    Engines_list = ["davinci", "curie", "babbage", "ada", "davinci-instruct-beta-v3", "curie-instruct-beta-v2", "babbage-instruct-beta", "ada-instruct-beta",]
+    Engines_list = ["davinci", "curie", "babbage", "ada", "text-davinci-002", "text-curie-001", "text-babbage-001", "text-ada-001",]
