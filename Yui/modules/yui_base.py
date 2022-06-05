@@ -3,6 +3,7 @@
 from asyncio import sleep
 from random import choice
 from heroku3 import from_key
+from pyrogram import enums
 
 from Yui.data.yui_msgs import Emergency_Msgs, Photo_Reesponse, Sticker_Response, Video_and_gif_Response, Document_Response
 from Yui.data.database import Yui_Database
@@ -52,11 +53,10 @@ class Yui_Base():
 
     async def reply_to_user(self, message, answer):
         chat_id = message.chat.id
-        await message._client.send_chat_action(chat_id, "typing")
+        await message.reply_chat_action(enums.ChatAction.TYPING)
         # Sleeping for 2 seconds to make the bot more real
         await sleep(2)
         await message.reply_text(answer, reply_to_message_id=message.id)
-        await message._client.send_chat_action(chat_id, "cancel")
 
     async def set_ai_engine(self, engine):
         if self.heroku_app:

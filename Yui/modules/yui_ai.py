@@ -2,7 +2,7 @@
 
 import re
 
-from pyrogram import Client as yuiai, filters
+from pyrogram import Client as yuiai, filters, enums
 from pyrogram.types import Message
 from Yui.data.defaults import Defaults
 from .yui_base import Yui_Base
@@ -14,16 +14,16 @@ yui_bot_id = int(Config.BOT_TOKEN.split(":")[0])
 
 
 # Chat
-@yuiai.on_message(~filters.command(["engine", "help", "restart"]) & ~filters.via_bot)
+@yuiai.on_message(~filters.command(["engine", "help", "restart"]) &~filters.via_bot)
 async def talk_with_yui(_, message: Message):
     c_type = message.chat.type
     r_msg = message.reply_to_message
     yui_base = Yui_Base()
     # For Private chats
-    if c_type == "private":
+    if c_type == enums.ChatType.PRIVATE:
         quiz_text = message.text
     # For Public and private groups
-    elif c_type == "supergroup" or "group":
+    elif c_type == enums.ChatType.SUPERGROUP or enums.ChatType.GROUP:
         # Regex to find if "yui" or "Yui" in the message text
         if message.text and re.search(r'\bYui|yui\b', message.text):
             quiz_text = message.text
