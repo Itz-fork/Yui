@@ -35,6 +35,7 @@ python3 -m Yui
 - `API_HASH` - Your API_HASH. Get it from [my.telegram.org](my.telegram.org)
 - `BOT_TOKEN` - Bot Token of Your Telegram Bot. Get it from [@BotFather](https://t.me/BotFather)
 - `OWNER_ID` - Your Telegram Account ID. Get it from [@MissRose_bot](https://t.me/MissRose_bot) (Start the bot and send <samp>/info</samp> command)
+- `CHAT_BOT_NAME` - Custom name for your chatbot. (Default to `Yui`)
 - `OPENAI_KEY` - Your own [OpenAI](https://openai.com/) API Key
   - Go to [OpenAI Sign Up Page](https://beta.openai.com/signup) and create your OpenAI Account
   - Then go to [API Keys Section](https://beta.openai.com/account/api-keys)

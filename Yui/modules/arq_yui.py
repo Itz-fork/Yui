@@ -2,6 +2,7 @@
 
 from aiohttp import ClientSession
 from Python_ARQ import ARQ
+from config import Config
 
 
 class Yui_ARQ():
@@ -24,6 +25,6 @@ class Yui_ARQ():
         frm_luna = await self.arq.luna(question, user_id)
         await self.__close_session(self.session)
         if frm_luna.ok:
-            return frm_luna.result
+            return f"{frm_luna.result}".replace("Luna", Config.CHAT_BOT_NAME)
         else:
             return None

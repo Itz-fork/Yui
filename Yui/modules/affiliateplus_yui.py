@@ -2,6 +2,7 @@
 
 from aiohttp import ClientSession
 from py_trans import Async_PyTranslator
+from config import Config
 
 
 class Yui_Affiliate():
@@ -29,7 +30,7 @@ class Yui_Affiliate():
             "email": "sorry@i-dont-have-an-email.sad",
             "kindmusic": "Future bass"
         }
-        self.bot_name = "Yui"
+        self.bot_name = Config.CHAT_BOT_NAME
         self.dev_name = "Itz-fork"
 
     async def ask_yui(self, message, user_id):

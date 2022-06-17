@@ -25,7 +25,7 @@ async def talk_with_yui(_, message: Message):
     # For Public and private groups
     elif c_type == enums.ChatType.SUPERGROUP or enums.ChatType.GROUP:
         # Regex to find if "yui" or "Yui" in the message text
-        if message.text and re.search(r'\bYui|yui\b', message.text):
+        if message.text and re.search(f"{Config.CHAT_BOT_NAME}|{Config.CHAT_BOT_NAME.upper()}|{Config.CHAT_BOT_NAME.lower()}", message.text):
             quiz_text = message.text
         # For replied message
         elif r_msg:
@@ -77,21 +77,22 @@ async def set_yui_engine(_, message: Message):
 ✧ `babbage` - Can perform straightforward tasks like simple classification.
 ✧ `ada` - Usually the fastest model and can perform tasks that don’t require too much nuance.
 
-**Instruct**
 
-Instruct models are better at following your instructions
+**GPT-3 Models**
 
-✧ `davinci-instruct-beta-v3`
-✧ `curie-instruct-beta-v2`
-✧ `babbage-instruct-beta`
-✧ `ada-instruct-beta`
+GPT-3 models can understand and generate natural language. Openai offer four main models with different levels of power suitable for different tasks. Davinci is the most capable model, and Ada is the fastest
+
+✧ `text-davinci-002`
+✧ `text-curie-001`
+✧ `text-babbage-001`
+✧ `text-ada-001`
 
 
 **👀 How to set the engines?**
 
 To set an engine use `/engine` command followed by the engine code name you want
 **Ex:**
-`/engine curie-instruct-beta-v2`"""
+`/engine text-curie-001`"""
         return await message.reply_text(engines_txt)
     else:
         yui_base = Yui_Base()
@@ -130,7 +131,7 @@ async def help_yui(_, message: Message):
 async def restart_yui(_, message: Message):
     if Config.ON_HEROKU:
         yui_base = Yui_Base()
-        await message.reply("`Restarting Yui, Please wait...!`")
+        await message.reply(f"`Restarting {Config.CHAT_BOT_NAME}, Please wait...!`")
         await yui_base.restart_yui()
     else:
         await message.reply("**This command is available only for Heroku users**")

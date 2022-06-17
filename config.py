@@ -7,6 +7,8 @@ class Config(object):
     API_HASH = os.environ.get("API_HASH")
     BOT_TOKEN = os.environ.get("BOT_TOKEN")
     OWNER_ID = int(os.environ.get("OWNER_ID"))
+    # Chat bot's name
+    CHAT_BOT_NAME = os.environ.get("CHAT_BOT_NAME", "Yui")
     # Your OpenAI API key
     OPENAI_KEY = os.environ.get("OPENAI_KEY")
     # Your ARQ API Key
