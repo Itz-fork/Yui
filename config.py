@@ -12,7 +12,7 @@ class Config(object):
     # Your OpenAI API key
     OPENAI_KEY = os.environ.get("OPENAI_KEY")
     # Your ARQ API Key
-    ARQ_API_URL = "https://thearq.tech"
+    ARQ_API_URL = "http://arq.hamker.dev"
     ARQ_KEY = os.environ.get("ARQ_KEY")
     # Default Chatbot engine you want to use after OpenAI
     DEFAULT_CHATBOT = os.environ.get("DEFAULT_CHATBOT", "affiliateplus")
